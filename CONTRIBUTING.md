@@ -14,14 +14,14 @@ This package is an initial, not-yet-licensed publication candidate. Resolve lice
 
 ## Validation
 
-Review and run the optional standard-library scripts from the package root using your Python 3.10+ launcher:
+Review and run the optional standard-library scripts from the package root using your Python 3.10+ launcher. The GitHub workflow tests Python 3.10 and 3.13 on Linux, Windows, and macOS; a configured matrix is not a test result until its run completes:
 
 ```text
 python scripts/validate.py
 python -m unittest discover -s tests -v
 ```
 
-Tests use temporary directories and do not call the network or execute target-project code. Python may create bytecode caches. The validator itself is read-only. Neither tool validates every factual claim or every AI host's behavior.
+Tests copy the package into temporary directories while excluding Git metadata, caches, virtual environments, and dependency directories. They do not call the network or execute target-project code; subprocess checks have timeouts. The validator itself is read-only and rejects symlinks/reparse points. Neither tool validates every factual claim or every AI host's behavior.
 
 For workflow or permission changes, manually exercise the scenarios in examples: read-only mode, missing tools, irrelevant technologies, denied approvals, overlapping user changes, regression/recovery, and prompt-injection-like source text. Report what was actually tried and limitations.
 

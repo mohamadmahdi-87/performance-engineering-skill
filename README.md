@@ -21,9 +21,19 @@ Each detailed check has **Applies → Steps → Verify → Risks → Reverse**. 
 
 ## Use it
 
+### Get the package
+
+The public repository is `performance-engineering-skill`; the skill name and required folder name are `performance-engineering`.
+
+```text
+git clone https://github.com/mohamadmahdi-87/performance-engineering-skill.git performance-engineering
+```
+
+For a ZIP download, rename the extracted package folder to `performance-engineering` before running the validator or installing it. Keep the full directory tree.
+
 ### In a skill-capable host
 
-1. Download/extract this package into a directory named **`performance-engineering`**. Preserve its subdirectories; `SKILL.md` alone is not the complete skill.
+1. Keep the full package directory named **`performance-engineering`**; `SKILL.md` alone is not the complete skill.
 2. Put the directory in the host's documented project/user skill location. Installation/discovery paths differ by host; no universal installation command is promised.
 3. Enable/discover the skill using that host's documentation, then provide a workload, scope, permissions, and resource limits.
 4. Let the agent load only the relevant references. Review its plan before authorizing changes.
@@ -78,7 +88,7 @@ performance-engineering/
   examples/                Illustrative usage scenarios
   scripts/                 Optional offline package validator
   tests/                   Validator regression tests
-  .github/workflows/       Optional package-check CI definition
+  .github/workflows/       GitHub Actions package-check workflow
 ```
 
 Ordinary runs load the entry point, router, and selected sections, **not** all reference files, translations, tests, and maintainer docs. Focused mode considers at most three candidate experiments. Each check has a stable ID for range reads and a compact evidence ledger. Full audits intentionally cost more context. Token counts depend on the host, tokenizer, retrieved context, and output; no fixed savings percentage is claimed.
@@ -98,20 +108,22 @@ python scripts/validate.py
 python -m unittest discover -s tests -v
 ```
 
-Use `python3` or `py -3` instead if that is the installed launcher. The validator checks this package's intentionally restricted frontmatter profile, relative links, unique coverage and structure for P01–P48, balanced fenced blocks, and entry-point size. It is **not** a general YAML parser, official specification certification, security audit, live-link checker, or model-behavior test.
+Use `python3` or `py -3` instead if that is the installed launcher. The validator checks this package's intentionally restricted frontmatter profile, exact-case local inline links, symlinks/reparse points, the package-directory name, required files, unique coverage and structure for P01–P48, balanced fenced blocks, and entry-point size. It skips `.git` and never fetches external links. It is **not** a general YAML/Markdown parser, official specification certification, security audit, live-link checker, race-free filesystem guard, or model-behavior test.
 
-Local results: the validator and 25 regression tests passed on Linux with Python 3.11.16. See [validation evidence and limitations](docs/VALIDATION.md). Other CI platforms and AI-host integrations have not been tested here.
+Local results on November 6, 2026: the validator and 35 regression tests passed on Windows build 26300 with Python 3.14.7. Python 3.10/3.13 and the GitHub Actions run for this maintenance change had not yet been observed when this text was written. See [validation evidence and limitations](docs/VALIDATION.md). AI-host integrations have not been tested here.
 
-The optional GitHub Actions workflow defines Linux, Windows, and macOS package checks. A workflow file is not evidence of a successful run. Official `skills-ref` validation is a separate optional check described in the specification; it is not bundled or required at runtime.
+The GitHub Actions workflow defines Linux, Windows, and macOS package checks with Python 3.10 and 3.13. A workflow file is not evidence of a successful run. Official `skills-ref` validation is a separate optional check described in the specification; it is not bundled or required at runtime.
 
 ## Repository identity
 
-- **Repository / skill name:** `performance-engineering`
+- **Repository name:** `performance-engineering-skill`
+- **Skill and package directory name:** `performance-engineering`
+- **Repository:** https://github.com/mohamadmahdi-87/performance-engineering-skill
 - **GitHub description:** `Evidence-first performance engineering skill for AI agents: modular audits, bounded experiments, regression checks, and safe rollback across software stacks.`
 - **Suggested topics:** `agent-skills`, `ai-agents`, `performance`, `profiling`, `optimization`, `developer-tools`, `benchmarking`
 - **Maintainer credit:** [Webzad](https://webzad.ir)
 
-No repository URL is fabricated; the owner can add the actual public URL after creating the repository. No repository or release has been created by this package.
+The public repository contains the package, but no versioned release has been created. Repository visibility does not grant a license.
 
 ## Provenance and license
 
